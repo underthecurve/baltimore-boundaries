@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20141203</CreaDate><CreaTime>13153000</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.1\ArcToolbox\Toolboxes\Data Management Tools.tbx\DeleteField" Date="20141203" Time="131530">DeleteField bcpss_es_boundary OBJECTID_1;BLDG_NUM;PRG_NUM</Process></lineage></DataProperties></Esri></metadata>
