@@ -3,6 +3,8 @@ library('sf')
 library('viridis')
 library('tigris')
 
+### Reference: https://learn.r-journalism.com/en/mapping/static_maps/static-maps/
+
 ### Neighborhoods
 ## http://data.imap.maryland.gov/datasets/maryland-baltimore-city-neighborhoods/data
 
@@ -72,6 +74,7 @@ ggsave('councildistricts.png', width = 7, height = 7, bg = 'transparent')
 
 
 ### interactive
+# https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html
 
 library('tmap')
 tmap_mode("view")
@@ -89,7 +92,9 @@ tm_shape(neighborhoods) +
                              "Address" = "ADDRESS"), id = "NAME") +
   tm_shape(council.districts) +
   tm_polygons(popup.vars = c("District" = "AREA_NAME", 
-                             "Council member" = "CNTCT_NME"), id = "NAME") 
+                             "Council member" = "CNTCT_NME"), id = "NAME",
+              
+          title = "Happy Planet Index") 
 
 
 
