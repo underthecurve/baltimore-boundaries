@@ -77,9 +77,12 @@ library('tmap')
 tmap_mode("view")
 
 tm_shape(neighborhoods) +
-  tm_polygons(popup.vars = c("Neighborhood" = "LABEL"), id = "LABEL") 
+  tm_polygons(popup.vars = c("Neighborhood" = "LABEL"), id = "LABEL", fill = 'blue') +
+  tm_shape(tracts) +
+  tm_polygons(popup.vars = c("Census tract" = "NAME"), id = "NAME") +
+  tm_shape(school.zones) +
+  tm_polygons(popup.vars = c("School" = "NAME", 
+                             "Address" = "ADDRESS"), id = "NAME") 
 
 
-tm_shape(tracts) +
-  tm_polygons(popup.vars = c("Census tract" = "NAME"), id = "NAME") 
 
