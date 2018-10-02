@@ -77,12 +77,19 @@ library('tmap')
 tmap_mode("view")
 
 tm_shape(neighborhoods) +
-  tm_polygons(popup.vars = c("Neighborhood" = "LABEL"), id = "LABEL", fill = 'blue') +
+  tm_polygons(popup.vars = c("Neighborhood" = "LABEL"), id = "LABEL", fill = 'blue')  +
+  tm_shape(legislative.districts) +
+  tm_polygons(popup.vars = c("Legislative district" = "AREA_NAME"), id = "AREA_NAME") +
+  tm_shape(police.districts) +
+  tm_polygons(popup.vars = c("Police district" = "Dist_Name"), id = "Dist_Name") +
   tm_shape(tracts) +
   tm_polygons(popup.vars = c("Census tract" = "NAME"), id = "NAME") +
   tm_shape(school.zones) +
   tm_polygons(popup.vars = c("School" = "NAME", 
-                             "Address" = "ADDRESS"), id = "NAME") 
+                             "Address" = "ADDRESS"), id = "NAME") +
+  tm_shape(council.districts) +
+  tm_polygons(popup.vars = c("District" = "AREA_NAME", 
+                             "Council member" = "CNTCT_NME"), id = "NAME") 
 
 
 
