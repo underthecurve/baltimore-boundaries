@@ -101,8 +101,6 @@ ggplot(zip.codes) + geom_sf() +
 
 ggsave('zipcodes.png', width = 7, height = 7, bg = 'transparent')
 
-
-
 ### interactive
 # https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html
 
@@ -111,8 +109,12 @@ tmap_mode("view")
 
 tm_shape(neighborhoods) +
   tm_polygons(popup.vars = c("Neighborhood" = "LABEL"), id = "LABEL", fill = 'blue')  +
+  tm_shape(csas) +
+  tm_polygons(popup.vars = c("Name" = "CSA2010", "Population (2010)" = "tpop10"), id = "CSA2010") +
   tm_shape(legislative.districts) +
   tm_polygons(popup.vars = c("Legislative district" = "AREA_NAME"), id = "AREA_NAME") +
+  tm_shape(zip.codes) +
+  tm_polygons(popup.vars = c("Name" = "ZIPNAME", "ZIP Code" = "ZIPCODE1"), id = "ZIPCODE1") +
   tm_shape(police.districts) +
   tm_polygons(popup.vars = c("Police district" = "Dist_Name"), id = "Dist_Name") +
   tm_shape(tracts) +
@@ -122,9 +124,7 @@ tm_shape(neighborhoods) +
                              "Address" = "ADDRESS"), id = "NAME") +
   tm_shape(council.districts) +
   tm_polygons(popup.vars = c("District" = "AREA_NAME", 
-                             "Council member" = "CNTCT_NME"), id = "NAME",
-              
-          title = "Happy Planet Index") 
+                             "Council member" = "CNTCT_NME"), id = "NAME") 
 
 
 
