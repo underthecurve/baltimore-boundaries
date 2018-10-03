@@ -72,6 +72,36 @@ ggplot(council.districts) + geom_sf() +
 
 ggsave('councildistricts.png', width = 7, height = 7, bg = 'transparent')
 
+### Community Statistical Areas
+## https://data-bniajfi.opendata.arcgis.com/datasets/vital-signs-16-census-demographics
+
+csas <- st_read("Vital_Signs_16_Census_Demographics/Vital_Signs_16_Census_Demographics.shp")
+
+ggplot(csas) + geom_sf() +
+  theme_void() +
+  theme(panel.grid.major = element_line(colour = 'transparent'))
+
+ggsave('csas.png', width = 7, height = 7, bg = 'transparent')
+
+### Zip code maps
+## https://planning.maryland.gov/MSDC/Pages/zipcode_map/2015-16/zip15-16idx.aspx
+## note "The resulting files are meant to serve as a "good approximation" of zip codes as polygons (which in reality they are not) but are not official Zip Code maps and are not meant to be a substitute for any products offered by the U.S. Postal Service, the official source for zip code information." via https://planning.maryland.gov/MSDC/Pages/postalservice-zipcode-map.aspx
+
+zip.codes <- st_read("bacizc_15/bacizc15.shp")
+zip.codes.2 <- st_read("bacizc_15/bacipz15.shp")
+
+ggplot(zip.codes) + geom_sf() +
+  theme_void() +
+  theme(panel.grid.major = element_line(colour = 'transparent')) +
+  geom_sf(data = zip.codes.2) +
+  theme_void() +
+  theme(panel.grid.major = element_line(colour = 'transparent')) 
+
+# dots bc there are multiple zip codes in the area, see https://planning.maryland.gov/MSDC/Documents/zipcode_map/2015/bacizc_15.pdf
+
+ggsave('zipcodes.png', width = 7, height = 7, bg = 'transparent')
+
+
 
 ### interactive
 # https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html
